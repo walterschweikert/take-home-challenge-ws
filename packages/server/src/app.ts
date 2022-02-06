@@ -2,12 +2,16 @@ import cookieParser from 'cookie-parser';
 import express from 'express';
 import http from 'http';
 import logger from 'morgan';
+import cors from 'cors';
+// import bodyParser from 'body-parser';
 import { router } from './router';
 
 export const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use(cors());
+// app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/api', router);
@@ -78,8 +82,8 @@ function onError(error: NodeJS.ErrnoException) {
  */
 
 function onListening() {
-  const addr = server.address();
-  const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr?.port}`;
+  const addr = server.address() || '';
+  const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
   // eslint-disable-next-line no-console
   console.log(`Listening on ${bind}`);
 }

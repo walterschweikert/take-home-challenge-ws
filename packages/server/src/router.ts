@@ -12,7 +12,7 @@ interface MoveBody {
   board: Board;
 }
 
-router.post<'/begin', never, GameStatus>('/begin', (req, res) => {
+router.get<'/begin', never, GameStatus>('/begin', (req, res) => {
   /**
    * FIXME: Delete this function body and complete it correctly instead.
    * You do not need to use the arguments provided, but that
