@@ -1,13 +1,15 @@
-import {FC} from 'react'
-import {Board} from "@mapistry/take-home-challenge-shared";
+import {FC, useState} from 'react'
+import {GameStatus} from "@mapistry/take-home-challenge-shared";
 import { Gamerow} from "./Gamerow";
 
 interface GameboardProps {
-  board: Board
+  initialStatus: GameStatus
 }
 
 export const Gameboard: FC<GameboardProps> = (props) => {
-  const {board} = props
+  const {initialStatus } = props
+  const [gameStatus, setGameStatus] = useState<GameStatus>(initialStatus)
+  const { board } = gameStatus
   return (
     <div style={{
       position: 'absolute',
@@ -15,9 +17,9 @@ export const Gameboard: FC<GameboardProps> = (props) => {
       top: '50%',
       transform: 'translate(-50%, -50%)'
     }}>
-      <Gamerow board={board.slice(0,2)} />
-      <Gamerow board={board.slice(3,5)} />
-      <Gamerow board={board.slice(6,8)} />
+      <Gamerow board={board} initialCell={0} setGameStatus={setGameStatus} />
+      <Gamerow board={board} initialCell={3} setGameStatus={setGameStatus} />
+      <Gamerow board={board} initialCell={6} setGameStatus={setGameStatus} />
     </div>
   )
 }

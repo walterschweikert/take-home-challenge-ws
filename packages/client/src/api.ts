@@ -9,14 +9,13 @@ export const begin = async (
   difficulty: Difficulty,
   whoIsFirst: Player,
 ): Promise<GameStatus> => {
-  const response = await fetch('/api/begin', {
+  const response = await fetch('http://localhost:3001/api/begin', {
     method: 'post',
     headers: {
       'content-type': 'application/json',
     },
     body: JSON.stringify({ difficulty, whoIsFirst }),
   });
-
   const status: GameStatus = await response.json();
   return status;
 };
