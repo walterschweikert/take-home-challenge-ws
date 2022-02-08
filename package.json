@@ -11,6 +11,10 @@
     "packages/*"
   ],
   "dependencies": {
+    "@material-ui/core": "^4.9.10",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.9.10",
+    "@types/material-ui": "^0.21.7",
     "cross-env": "^7.0.3"
   },
   "devDependencies": {
@@ -35,7 +39,9 @@
   "scripts": {
     "lint": "eslint \"**/*.{js,jsx,ts,tsx}\" && echo \"No linting problems found.\"",
     "test": "jest",
-    "typecheck": "tsc --noEmit && echo \"No type problems found.\""
+    "typecheck": "tsc --noEmit && echo \"No type problems found.\"",
+    "server": "yarn workspace @mapistry/take-home-challenge-server",
+    "client": "yarn workspace @mapistry/take-home-challenge-client"
   },
   "husky": {
     "hooks": {
